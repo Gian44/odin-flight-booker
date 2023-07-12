@@ -1,0 +1,22 @@
+<!-- app/views/flights/index.html.erb -->
+<h1>Flight Search</h1>
+
+<%= form_tag flights_path, method: :get do %>
+  <div>
+    <%= label_tag :departure_id, 'Departure Airport' %>
+    <%= select_tag :departure_airport_id, options_from_collection_for_select(Airport.all, :id, :code) %>
+  </div>
+  <div>
+    <%= label_tag :arrival_id, 'Arrival Airport' %>
+    <%= select_tag :arrival_id, options_from_collection_for_select(Airport.all, :id, :code) %>
+  </div>
+  <div>
+    <%= label_tag :num_tickets, 'Number of Passengers' %>
+    <%= select_tag :num_tickets, options_for_select([1, 2, 3, 4]) %>
+  </div>
+  <div>
+    <%= label_tag :flight_date, 'Flight Date' %>
+    <%= select_date(Date.today, order: [:month, :day, :year]) %>
+  </div>
+  <%= submit_tag 'Search Flights' %>
+<% end %>
