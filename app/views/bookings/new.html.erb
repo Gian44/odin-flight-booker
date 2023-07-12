@@ -1,0 +1,29 @@
+<h1>New Booking</h1>
+
+<%= form_with(model: @booking, url: bookings_path) do |form| %>
+  <%= form.hidden_field :flight_id %>
+
+  <h2>Flight Details</h2>
+  <p>Flight Date: <%= @flight.date %></p>
+  <p>Departure Airport: <%= @flight.departure.code %></p>
+  <p>Arrival Airport: <%= @flight.arrival.code %></p>
+
+  <h2>Passenger Information</h2>
+  <% @booking.passengers.each_with_index do |passenger, index| %>
+    <%= form.fields_for :passengers, passenger do |passenger_fields| %>
+      <div>
+        <h3>Passenger <%= index + 1 %></h3>
+        <div>
+          <%= passenger_fields.label :name, "Name:" %>
+          <%= passenger_fields.text_field :name %>
+        </div>
+        <div>
+          <%= passenger_fields.label :email, "Email:" %>
+          <%= passenger_fields.email_field :email %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%= form.submit "Submit Booking" %>
+<% end %>

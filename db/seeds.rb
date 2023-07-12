@@ -1,9 +1,9 @@
-airport_codes = ['SFO', 'NYC', 'LAX', 'ORD', 'DFW', 'ATL']
+#airport_codes = ['SFO', 'NYC', 'LAX', 'ORD', 'DFW', 'ATL']
 
-airport_codes.each do |code|
-  Airport.create!(code: code)
-end
-puts 'Flights seeded successfully!'
+#airport_codes.each do |code|
+ # Airport.create!(code: code)
+#end
+#puts 'Flights seeded successfully!'
 
 
 airports = Airport.all
